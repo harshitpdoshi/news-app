@@ -70,13 +70,11 @@
 
  ### Technology Stack
 
- - **Programming Language:** Python 3.11
- - **Web Framework:** FastAPI 0.95+
- - **Database:** PostgreSQL 14
- - **Message Broker:** RabbitMQ 3.x
- - **Authentication:** OAuth2 / JWT, integrated with Keycloak
- - **Containerization:** Docker & Kubernetes
- - **CI/CD:** GitHub Actions
++ **Programming Language:** Go 1.21+
++ **TUI Framework:** Bubble Tea + Bubbles
++ **Markdown Renderer:** Glamour
++ **Database:** SQLite (local file)
++ **CI/CD:** GitHub Actions
 
  ### Python Environment (uv)
 
@@ -146,9 +144,15 @@
     ```bash
     uv run alembic upgrade head
     ```
- 5. Start the services for local development:  
+5. Start the services for local development:  
     ```bash
     uv run docker-compose up
+    ```
+
+6. Build and run the CLI TUI application (requires Go 1.21+):
+    ```bash
+    go build -o news-app ./cmd/news-app/main.go
+    ./news-app
     ```
 
  ## Development Workflow

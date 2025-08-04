@@ -1,6 +1,6 @@
-# News App - CLI RSS Reader
+# News App - CLI RSS Reader (TUI)
 
-A command-line RSS feed reader built with Python, Click, and Rich.
+A command-line RSS feed reader built with Go, Bubble Tea, and Glamour.
 
 ## Features
 
@@ -13,95 +13,29 @@ A command-line RSS feed reader built with Python, Click, and Rich.
 
 ## Installation
 
-Make sure you have `uv` installed:
+Requires Go 1.21 or later.
+
+Install the binary:
 
 ```bash
-pip install uv
-```
-
-- Install dependencies:
-
-```bash
-uv sync
+go install github.com/your-org/news-app/cmd/news-app@latest
 ```
 
 ## Usage
 
-### Adding a feed
+Run the TUI application:
 
 ```bash
-news-app feed add https://feeds.bbci.co.uk/news/rss.xml
+news-app
 ```
 
-### Listing feeds
+Use the arrow keys to navigate feeds and articles, Enter to select, `b` to go back, and `q` to quit.
 
-```bash
-news-app feed list
-```
+## Configuration
 
-### Updating feeds
+The database file `feeds.db` is created in the current directory on first run. Add your RSS feeds
+directly to the database (e.g. via a separate tool) before launching the TUI.
 
-Update a specific feed:
-```bash
-news-app feed update 1
-```
+## License
 
-Update all feeds:
-```bash
-news-app feed update-all
-```
-
-### Listing articles
-
-List unread articles:
-```bash
-news-app article list
-```
-
-List articles from a specific feed:
-```bash
-news-app article list --feed-id 1
-```
-
-### Reading articles
-
-```bash
-news-app article read 1
-```
-
-## Development
-
-### AI Summarization
-
-Set your OpenAI API key:
-```bash
-export OPENAI_API_KEY=your_api_key_here
-```
-
-## Development
-To run the app directly:
-
-```bash
-uv run python main.py
-```
-
-## Testing
-
-Install test dependencies:
-```bash
-uv sync --extra test
-```
-
-Run tests:
-```bash
-uv run pytest
-```
-
-## Dependencies
-
- - feedparser: For parsing RSS feeds
- - click: For creating the CLI interface
- - rich: For beautiful terminal output
- - openai: For AI-powered article summarization
- - requests: For fetching and scraping web articles
- - beautifulsoup4: For parsing HTML content
+MIT
