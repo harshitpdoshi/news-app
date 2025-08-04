@@ -29,13 +29,18 @@ func UpdateFeed(d *db.DB, f db.Feed) (int, error) {
 			t := item.PublishedParsed.UTC()
 			pub = &t
 		}
+		// Safely extract author name
+		author := ""
+		if item.Author != nil {
+			author = item.Author.Name
+		}
 		articles = append(articles, db.Article{
 			FeedID:    f.ID,
 			Title:     item.Title,
 			Link:      item.Link,
 			Summary:   item.Description,
 			Published: pub,
-			Author:    item.Author.Name,
+			Author:    author,
 			Read:      false,
 		})
 	}

@@ -71,8 +71,8 @@ func (f feedListModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			switch msg.String() {
 			case "enter":
 				url := f.input.Value()
-				if _, err := f.db.AddFeed(url, url, ""); err == nil {
-					rss.UpdateFeed(f.db, db.Feed{URL: url})
+				if feed, err := f.db.AddFeed(url, url, ""); err == nil {
+					rss.UpdateFeed(f.db, feed)
 				}
 				return newFeedListModel(f.db), nil
 			case "esc":
