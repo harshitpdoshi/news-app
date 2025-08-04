@@ -29,7 +29,20 @@ Run the TUI application:
 news-app
 ```
 
-Use the arrow keys to navigate feeds and articles, Enter to select, `b` to go back, and `q` to quit.
+Keybindings in the Feeds list:
+- ↑/↓: move between feeds
+- Enter: view articles for selected feed
+- a: add a new feed (enter URL)
+- d: delete selected feed
+- u: update selected feed
+- r: refresh all feeds
+- q, Esc: quit
+
+Within Articles or Detail views:
+- ↑/↓: navigate
+- Enter: open article detail
+- b: go back
+- q, Esc: quit
 
 ## Configuration
 
