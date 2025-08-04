@@ -11,6 +11,15 @@ type DB struct {
 	conn *sql.DB
 }
 
+// UpdateFeedMeta updates the feed's title, description, and last_updated timestamp.
+func (d *DB) UpdateFeedMeta(id int, title, description string, lastUpdated time.Time) error {
+	_, err := d.conn.Exec(
+		`UPDATE feeds SET title = ?, description = ?, last_updated = ? WHERE id = ?`,
+		title, description, lastUpdated.Format(time.RFC3339), id,
+	)
+	return err
+}
+
 // New opens or creates the SQLite database at the given path and initializes the schema.
 func New(path string) (*DB, error) {
 	conn, err := sql.Open("sqlite3", path)
