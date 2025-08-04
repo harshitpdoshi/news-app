@@ -8,6 +8,7 @@ A command-line RSS feed reader built with Python, Click, and Rich.
 - Fetch and read articles from feeds
 - Mark articles as read
 - View unread articles
+- AI-powered article summarization
 - Update feeds to get new articles
 
 ## Installation
@@ -18,7 +19,7 @@ Make sure you have `uv` installed:
 pip install uv
 ```
 
-Install dependencies:
+- Install dependencies:
 
 ```bash
 uv sync
@@ -70,6 +71,14 @@ news-app article read 1
 
 ## Development
 
+### AI Summarization
+
+Set your OpenAI API key:
+```bash
+export OPENAI_API_KEY=your_api_key_here
+```
+
+## Development
 To run the app directly:
 
 ```bash
@@ -90,6 +99,9 @@ uv run pytest
 
 ## Dependencies
 
-- feedparser: For parsing RSS feeds
-- click: For creating the CLI interface
-- rich: For beautiful terminal output
+ - feedparser: For parsing RSS feeds
+ - click: For creating the CLI interface
+ - rich: For beautiful terminal output
+ - openai: For AI-powered article summarization
+ - requests: For fetching and scraping web articles
+ - beautifulsoup4: For parsing HTML content

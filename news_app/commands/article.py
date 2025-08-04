@@ -3,6 +3,7 @@ from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
 from news_app.services.database import db
+from news_app.services.summarizer import summarize_article
 
 console = Console()
 
@@ -80,3 +81,10 @@ def read(article_id):
     console.print(article.summary if article.summary else "No summary available.")
     console.print("")
     console.print(f"[link={article.link}]Read full article[/link]")
+
+    console.print("[cyan]Generating AI summary...[/cyan]")
+    try:
+        ai_summary = summarize_article(article.link)
+        console.print(Panel(ai_summary, title="AI Summary"))
+    except Exception as e:
+        console.print(f"[red]AI summarization failed: {e}[/red]")
